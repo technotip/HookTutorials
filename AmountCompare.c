@@ -19,7 +19,8 @@ int64_t hook(uint32_t reserved ) {
     otxn_field(SBUF(amount), sfAmount);
     uint64_t otxn_drops = AMOUNT_TO_DROPS(amount);
     uint64_t amount_xfl = float_set(-6, otxn_drops);
-
+    
+    // Reject if amount is less than 1 XAH
     if(float_compare(amount_xfl, 6089866696204910592, COMPARE_LESS) == 1)
         NOPE("You cannot send less than 1 XAH.");
 
